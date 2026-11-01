@@ -32,10 +32,9 @@ https://docs.google.com/document/d/1KItXMR23LWpFIc2pxm6GX3PtGBmMKYAsuRWfwW_jIm0/
 
 ## Identitas Mahasiswa
 
-- Nama: [Nama Lengkap]
-- NIM: [NIM]
-- Kelas: [Kelas]
-- Mata Kuliah: Pemrograman Berorientasi Objek
+- Nama: [Nicolia Esraawati Siallagan]
+- NIM: 2533033621279
+- Kelas: 3 pagi b
 
 ## Deskripsi Project
 
@@ -154,3 +153,115 @@ Dokumen analisis lengkap Bagian D dapat diakses melalui Google Docs berikut:
 
 **[Masukkan link Google Docs Bagian D di sini]
 https://docs.google.com/document/d/1e4WSpcUuLrjbcymYySnkJd_caUBpeygr76uJX331IHs/edit?usp=sharing
+
+
+# Character Manager – Java Visual Programming
+
+## Informasi Mahasiswa
+- **Nama:** [Nama Kamu]
+- **NIM:** [NIM Kamu]
+- **Kelas:** [Kelas Kamu]
+- **Mata Kuliah:** Pemrograman Visual
+
+---
+
+## Deskripsi Project
+
+Character Manager merupakan aplikasi sederhana berbasis Java Swing yang digunakan untuk mengelola karakter dalam sebuah permainan. Aplikasi ini menerapkan konsep Object-Oriented Programming (OOP) dan Model-View-Controller (MVC).
+
+Fitur aplikasi:
+- Menampilkan daftar karakter.
+- Menampilkan role dan level karakter.
+- Menampilkan HP, Attack, dan Mana.
+- Menambahkan karakter baru.
+- Menghitung total karakter.
+- Menghitung rata-rata level karakter.
+- Menggunakan tampilan GUI Java Swing.
+
+---
+
+## Struktur Package
+
+Project ini memiliki dua package utama:
+
+- **model:** Menyimpan data karakter, tipe karakter, dan pengelolaan karakter.
+- **view:** Menampilkan antarmuka aplikasi menggunakan Java Swing.
+
+---
+
+## TP10 – AppTheme & MainWindow v0.4
+
+### A. Implementasi Tema
+
+Pada TP10 dilakukan pengembangan tampilan aplikasi menggunakan class `AppTheme.java`.
+
+Class AppTheme digunakan untuk mengatur warna, font, dan border agar tampilan aplikasi lebih terstruktur dan konsisten.
+
+Implementasi tema meliputi:
+- Warna kartu berdasarkan role karakter.
+- Font untuk judul dan informasi karakter.
+- Border pada setiap kartu karakter.
+- Warna emas untuk karakter dengan level minimal 5.
+
+### B. Screenshot Sebelum dan Sesudah
+
+**1. Sebelum – MainWindow v0.3**
+
+Tampilan aplikasi sebelum menggunakan AppTheme.
+
+![alt text](image-2.png)
+
+**2. Sesudah – MainWindow v0.4**
+
+Tampilan aplikasi setelah menggunakan AppTheme dan penambahan fitur mini-challenge.
+![alt text](image-3.png)
+
+### C. Mini-Challenge
+
+Pada mini-challenge, karakter dengan level 5 atau lebih akan memiliki teks berwarna emas dan menggunakan font tebal.
+
+Batas level disimpan dalam konstanta bernama `GOLD_LEVEL_LIMIT` agar lebih mudah diubah dan dikelola.
+
+### D. Properti Tambahan
+
+Dua properti tambahan yang diterapkan:
+
+1. **Tooltip Karakter**
+
+   Tooltip menampilkan informasi HP, Attack, dan Mana ketika kursor diarahkan ke kartu karakter. Fitur ini membantu pengguna melihat informasi karakter dengan lebih mudah.
+
+2. **Karakter Level 1 Dinonaktifkan**
+
+   Karakter yang masih berada di level 1 dibuat berbeda secara visual menggunakan `setEnabled(false)`. Tujuannya untuk membedakan karakter yang masih berada pada level awal.
+
+### E. Pemisahan Tampilan dan Model
+
+Warna, font, dan border disimpan di dalam `AppTheme`, bukan di class `Character`. Hal ini dilakukan agar class Model hanya bertanggung jawab menyimpan dan mengelola data karakter, sedangkan pengaturan tampilan menjadi tanggung jawab View.
+
+Dengan pemisahan ini, tampilan aplikasi dapat diubah tanpa harus mengubah struktur data karakter.
+
+### F. Analisis TP10
+
+Dokumen analisis mengenai JavaBeans, getter dan setter, komponen Swing, pengaturan ukuran komponen, logical font, deriveFont(), serta penerapan prinsip MVC dapat dilihat melalui Google Docs berikut:
+
+**Link Google Docs:** https://docs.google.com/document/d/11kpDhQr3-Aafkd5seRJeqxDzZNPjUQwU1N-SBjd2iWI/edit?usp=sharing
+
+---
+
+## Teknologi yang Digunakan
+
+- Java
+- Java Swing
+- Visual Studio Code
+- JDK
+- Git dan GitHub
+
+---
+
+## Kesimpulan
+
+Melalui TP10, saya mempelajari cara mengatur tema aplikasi menggunakan AppTheme dan menerapkannya pada MainWindow. Saya juga memahami pentingnya pemisahan antara Model dan View dalam konsep MVC. Dengan adanya pengaturan tema terpusat, kode tampilan menjadi lebih rapi, konsisten, dan mudah dikembangkan.
+
+---
+
+**Project Character Manager – TP10**
