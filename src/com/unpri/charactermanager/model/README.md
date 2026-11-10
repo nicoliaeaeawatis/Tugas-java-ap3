@@ -1,267 +1,108 @@
-# Character Manager — TP3 (Java Visual SIH-6406)
+# TP12 – Sprint #5: Dari Satu Kolom ke Layar Berstruktur
 
-## Deskripsi
+## Identitas Mahasiswa
+- **Nama:** Nicolia Esrwati Siallagan
+- **NIM:** 23303621279
+- **Kelas: 3 Pagi B
 
-Character Manager adalah program Java sederhana untuk mengelola data karakter menggunakan konsep Object-Oriented Programming (OOP). Program ini menerapkan class, constructor, enum, encapsulation, serta fitur tambahan berupa mana dan pengecekan status hidup karakter.
+## Deskripsi Tugas
+TP12 merupakan pengembangan aplikasi Character Manager dari versi sebelumnya menjadi versi v0.5. Pada tugas ini, tampilan aplikasi dikembangkan menggunakan beberapa Layout Manager agar lebih terstruktur, rapi, dan dapat menyesuaikan ukuran jendela.
 
-## Screenshot Output
+## Tujuan
+1. Memahami penggunaan BorderLayout.
+2. Mengimplementasikan JScrollPane untuk daftar karakter.
+3. Menggunakan GridLayout dan BoxLayout.
+4. Memahami pengaruh perubahan ukuran JFrame terhadap komponen.
+5. Memisahkan bagian Model dan View sesuai konsep MVC.
 
-!![alt text](image.png)(output.png)
+## Perubahan File
+
+| File | Perubahan |
+|---|---|
+| AppTheme.java | Menambahkan BG_STATUS, TEXT_MUTED, dan font monospace |
+| MainWindow.java | Mengubah tampilan menjadi v0.5 dengan empat wilayah BorderLayout |
+| Main.java | Menambahkan 8 karakter dengan variasi role dan level |
+
+## Implementasi Layout
+
+Aplikasi Character Manager v0.5 menggunakan susunan berikut:
+
+- **NORTH:** Menampilkan header dan informasi statistik karakter.
+- **CENTER:** Menampilkan daftar kartu karakter menggunakan JScrollPane.
+- **EAST:** Menampilkan legenda role karakter menggunakan BoxLayout.
+- **SOUTH:** Menampilkan status aplikasi dan versi v0.5.
+
+### Layout Manager yang Digunakan
+1. **BorderLayout:** Membagi tampilan utama menjadi beberapa wilayah.
+2. **GridLayout:** Menyusun kartu karakter dan panel statistik.
+3. **BoxLayout:** Menyusun legenda role secara vertikal.
+4. **JScrollPane:** Memungkinkan daftar karakter digulir ketika ruang tampilan tidak mencukupi.
+
+## Mini-Challenge
+Pada tugas ini saya menambahkan:
+- Status aplikasi di bagian bawah sebelah kiri.
+- Informasi versi aplikasi v0.5 di sebelah kanan.
+- Minimal 8 karakter dengan role dan level yang berbeda.
+- Panel statistik tambahan menggunakan GridLayout 2x2.
+- Tampilan level minimal 5 menggunakan warna emas dan font tebal.
 
 ## Struktur Folder
 
 ```text
-CharacterManager/
-├── README.md
-├── output.png
-└── src/
+src/
+└── com/unpri/charactermanager/
     ├── Main.java
-    └── com/
-        └── unpri/
-            └── charactermanager/
-                └── model/
-                    ├── Character.java
-                    └── CharacterType.java
+    ├── model/
+    │   ├── Character.java
+    │   ├── CharacterManager.java
+    │   └── CharacterType.java
+    └── view/
+        ├── AppTheme.java
+        └── MainWindow.java
 ```
 
-https://docs.google.com/document/d/1KItXMR23LWpFIc2pxm6GX3PtGBmMKYAsuRWfwW_jIm0/edit?usp=sharing
+## Screenshot Hasil Implementasi
 
+### 1. Tampilan Awal
+Screenshot aplikasi ketika pertama kali dijalankan.
 
+![alt text](image-4.png)
 
-# Java Visual TP5 — CharacterManager
+### 2. Tampilan Setelah Jendela Diperlebar
+Screenshot aplikasi ketika ukuran jendela diperbesar.
 
-## Identitas Mahasiswa
+![alt text](image-5.png)
 
-- Nama: [Nicolia Esraawati Siallagan]
-- NIM: 2533033621279
-- Kelas: 3 pagi b
+### 3. Tampilan Ketika Jendela Diperkecil
+Screenshot aplikasi ketika ukuran jendela diperkecil dan scrollbar digunakan.
 
-## Deskripsi Project
+![alt text](image-6.png)
 
-Project ini merupakan pengembangan dari CharacterManager yang dibuat menggunakan bahasa pemrograman Java. Project ini bertujuan untuk mengelola data karakter dengan menerapkan konsep Object-Oriented Programming (OOP), seperti encapsulation, class, object, method, dan reference.
+## Analisis Perubahan Ukuran Jendela
 
-## Fitur Utama
+| Kondisi | Prediksi | Hasil |
+|---|---|---|
+| Jendela diperbesar | Area CENTER bertambah luas | Daftar karakter mendapat ruang lebih besar |
+| Jendela diperkecil | Area CENTER menjadi lebih sempit | Scrollbar membantu melihat daftar karakter |
+| Ukuran jendela normal | Semua wilayah terlihat | Header, daftar, legenda, dan status bar tampil |
 
-### 1. Character
+## Alasan Pemilihan Layout
 
-Class Character digunakan untuk menyimpan data karakter, seperti nama, tipe, level, HP, attack, dan mana.
+Saya menggunakan BorderLayout karena dapat membagi jendela menjadi beberapa bagian sesuai fungsinya. GridLayout dipilih untuk panel statistik karena dapat menyusun empat informasi secara teratur. BoxLayout digunakan pada legenda role agar setiap role tersusun secara vertikal dan mudah dibaca.
 
-Method equals() digunakan untuk membandingkan nama karakter. Perbandingan nama dilakukan tanpa membedakan huruf besar dan kecil, sehingga nama "Arthur" dan "arthur" dianggap sama.
+Saya tidak menggunakan FlowLayout untuk panel statistik karena susunan yang dihasilkan tidak membentuk tampilan 2x2 secara konsisten. Dengan kombinasi beberapa Layout Manager, tampilan aplikasi menjadi lebih terstruktur.
 
-### 2. CharacterManager
+## Pemisahan MVC
 
-CharacterManager digunakan untuk mengelola daftar karakter. Method yang tersedia meliputi:
+Pada aplikasi ini, package model digunakan untuk mengelola data karakter, sedangkan package view digunakan untuk mengatur tampilan aplikasi menggunakan Java Swing.
 
-- addCharacter(): menambahkan karakter baru dan menolak nama duplikat.
-- findByName(): mencari karakter berdasarkan nama.
-- removeCharacter(): menghapus karakter berdasarkan nama.
-- getTotalCharacters(): menghitung jumlah karakter.
-- getAllCharacters(): mengembalikan salinan daftar karakter.
-- getAverageLevel(): menghitung rata-rata level karakter.
-- findByType(): mencari karakter berdasarkan tipe.
-- findStrongest(): mencari karakter dengan nilai attack tertinggi.
-
-## Mini-Challenge
-
-Method getAverageLevel() menghitung rata-rata level seluruh karakter. Jika daftar karakter kosong, method mengembalikan 0.0 untuk menghindari pembagian dengan nol.
-
-Method findByType() mengembalikan daftar baru yang berisi karakter sesuai tipe yang dipilih.
-
-## Fitur Tambahan: findStrongest()
-
-Fitur tambahan yang saya buat adalah findStrongest(). Method ini digunakan untuk mencari karakter dengan nilai attack tertinggi.
-
-Fitur ini membantu pengguna mengetahui karakter yang memiliki attack paling besar tanpa harus membandingkan nilai attack satu per satu secara manual.
-
-Method ini hanya membaca data karakter dan tidak mengubah daftar internal CharacterManager. Jika daftar karakter kosong, method mengembalikan null karena belum ada karakter yang bisa dipilih.
-
-## Encapsulation dan Defensive Copy
-
-Class CharacterManager menggunakan ArrayList private untuk menyimpan daftar karakter. Daftar tersebut tidak dapat diakses secara langsung dari luar class.
-
-Method getAllCharacters() mengembalikan salinan daftar menggunakan new ArrayList<>(characters). Dengan demikian, penambahan atau penghapusan elemen pada daftar hasil tidak akan mengubah daftar internal CharacterManager.
-
-Namun, salinan ini bersifat shallow copy. Objek Character di dalam daftar hasil masih menggunakan reference ke objek yang sama.
-
-## Hasil Pengujian
-
-Pengujian program dilakukan untuk memeriksa beberapa fitur berikut:
-
-1. Menambahkan karakter baru.
-2. Menolak penambahan karakter dengan nama duplikat.
-3. Mencari dan menghapus karakter.
-4. Menghitung jumlah karakter.
-5. Menghitung rata-rata level.
-6. Mencari karakter berdasarkan tipe.
-7. Mencari karakter dengan attack tertinggi.
-8. Menguji defensive copy pada getAllCharacters().
-9. Menguji perilaku reference pada objek Character.
-
-### Screenshot Output
-![alt text](image-1.png)
-## Analisis Reference
-
-Analisis mengenai reference, primitive value, static variable, equals(), dan defensive copy dijelaskan lebih lanjut pada Google Docs berikut:
-
-**Link Google Docs:** https://docs.google.com/document/d/1xOGdtX8e_b4P3pPjKPBP1YwG6WKi52PwaSiJyu9EP0A/edit?usp=sharing
+Dengan menerapkan konsep MVC, perubahan tampilan dapat dilakukan tanpa harus mengubah struktur data pada Model.
 
 ## Kesimpulan
 
-Melalui project ini, saya mempelajari cara mengelola objek menggunakan Java, membandingkan objek berdasarkan data tertentu, menghindari duplikasi nama, serta menjaga data internal menggunakan encapsulation dan defensive copy. Saya juga mempelajari bahwa reference berpengaruh terhadap cara objek diakses dan diubah dalam program Java.
+Melalui TP12 ini, saya memahami cara menggunakan beberapa Layout Manager dalam Java Swing. Saya juga belajar membuat tampilan aplikasi yang dapat menyesuaikan ukuran jendela serta menggunakan JScrollPane untuk menampilkan daftar karakter.
 
+Selain itu, saya memahami pentingnya pemisahan Model dan View agar program lebih terstruktur dan mudah dikembangkan.
 
-## TP8 — Character Manager GUI dan Analisis MVC
-
-### 1. Implementasi MainWindow
-
-Pada TP8 ini, program Character Manager dikembangkan dari program berbasis console menjadi aplikasi berbasis GUI (Graphical User Interface) menggunakan Java Swing.
-
-Class `MainWindow` menggunakan `JFrame` sebagai jendela utama. Data karakter ditampilkan secara dinamis menggunakan perulangan (`for`), sehingga setiap karakter yang dimasukkan ke dalam `CharacterManager` dapat ditampilkan secara otomatis.
-
-Aplikasi juga memiliki JLabel statistik yang menampilkan rata-rata level seluruh karakter.
-
-### 2. Screenshot Hasil Program
-
-**Screenshot sebelum penambahan data:**
-![alt text](<Screenshot 2026-10-23 165624.png>)
-
-**Screenshot setelah penambahan data:**
-
-![alt text](<Screenshot 2026-10-23 165707.png>)
-
-Simpan gambar dengan nama `tp8-sesudah.png`.
-
-### 3. Alur Data dan Konsep MVC
-
-Alur kerja program dimulai dari class `Main` yang membuat objek karakter dan memasukkannya ke dalam `CharacterManager`. Selanjutnya, objek `CharacterManager` diberikan kepada `MainWindow` untuk menampilkan seluruh data karakter melalui perulangan. `CharacterManager` berperan sebagai bagian Model karena mengelola data karakter, sedangkan `MainWindow` berperan sebagai View karena menampilkan data kepada pengguna. Dengan demikian, program sudah menerapkan pemisahan antara pengelolaan data dan tampilan, meskipun pada implementasi sederhana ini View masih mengambil data langsung dari Manager.
-
-### 4. Karakter Baru
-
-Karakter yang ditambahkan dalam pengembangan TP8:
-
-| Nama | Tipe | Level | Alasan Pemilihan |
-|---|---|---|---|
-| Necro | ASSASSIN | Default | Memiliki tipe karakter dengan peran menyerang secara cepat dan menggunakan mana 50. |
-| Luna | MAGE | 5 | Dipilih sebagai karakter penyihir dengan level lebih tinggi. |
-| Boris | WARRIOR | 4 | Dipilih sebagai karakter petarung dengan level 4 dan HP 180. |
-
-Selain ketiga karakter tersebut, program juga menampilkan Arthur, Merlin, dan Robin sebagai karakter awal.
-
-### 5. Link Analisis GUI dan MVC
-
-Dokumen analisis lengkap Bagian D dapat diakses melalui Google Docs berikut:
-
-**[Masukkan link Google Docs Bagian D di sini]
-https://docs.google.com/document/d/1e4WSpcUuLrjbcymYySnkJd_caUBpeygr76uJX331IHs/edit?usp=sharing
-
-
-# Character Manager – Java Visual Programming
-
-## Informasi Mahasiswa
-- **Nama:** [Nama Kamu]
-- **NIM:** [NIM Kamu]
-- **Kelas:** [Kelas Kamu]
-- **Mata Kuliah:** Pemrograman Visual
-
----
-
-## Deskripsi Project
-
-Character Manager merupakan aplikasi sederhana berbasis Java Swing yang digunakan untuk mengelola karakter dalam sebuah permainan. Aplikasi ini menerapkan konsep Object-Oriented Programming (OOP) dan Model-View-Controller (MVC).
-
-Fitur aplikasi:
-- Menampilkan daftar karakter.
-- Menampilkan role dan level karakter.
-- Menampilkan HP, Attack, dan Mana.
-- Menambahkan karakter baru.
-- Menghitung total karakter.
-- Menghitung rata-rata level karakter.
-- Menggunakan tampilan GUI Java Swing.
-
----
-
-## Struktur Package
-
-Project ini memiliki dua package utama:
-
-- **model:** Menyimpan data karakter, tipe karakter, dan pengelolaan karakter.
-- **view:** Menampilkan antarmuka aplikasi menggunakan Java Swing.
-
----
-
-## TP10 – AppTheme & MainWindow v0.4
-
-### A. Implementasi Tema
-
-Pada TP10 dilakukan pengembangan tampilan aplikasi menggunakan class `AppTheme.java`.
-
-Class AppTheme digunakan untuk mengatur warna, font, dan border agar tampilan aplikasi lebih terstruktur dan konsisten.
-
-Implementasi tema meliputi:
-- Warna kartu berdasarkan role karakter.
-- Font untuk judul dan informasi karakter.
-- Border pada setiap kartu karakter.
-- Warna emas untuk karakter dengan level minimal 5.
-
-### B. Screenshot Sebelum dan Sesudah
-
-**1. Sebelum – MainWindow v0.3**
-
-Tampilan aplikasi sebelum menggunakan AppTheme.
-
-![alt text](image-2.png)
-
-**2. Sesudah – MainWindow v0.4**
-
-Tampilan aplikasi setelah menggunakan AppTheme dan penambahan fitur mini-challenge.
-![alt text](image-3.png)
-
-### C. Mini-Challenge
-
-Pada mini-challenge, karakter dengan level 5 atau lebih akan memiliki teks berwarna emas dan menggunakan font tebal.
-
-Batas level disimpan dalam konstanta bernama `GOLD_LEVEL_LIMIT` agar lebih mudah diubah dan dikelola.
-
-### D. Properti Tambahan
-
-Dua properti tambahan yang diterapkan:
-
-1. **Tooltip Karakter**
-
-   Tooltip menampilkan informasi HP, Attack, dan Mana ketika kursor diarahkan ke kartu karakter. Fitur ini membantu pengguna melihat informasi karakter dengan lebih mudah.
-
-2. **Karakter Level 1 Dinonaktifkan**
-
-   Karakter yang masih berada di level 1 dibuat berbeda secara visual menggunakan `setEnabled(false)`. Tujuannya untuk membedakan karakter yang masih berada pada level awal.
-
-### E. Pemisahan Tampilan dan Model
-
-Warna, font, dan border disimpan di dalam `AppTheme`, bukan di class `Character`. Hal ini dilakukan agar class Model hanya bertanggung jawab menyimpan dan mengelola data karakter, sedangkan pengaturan tampilan menjadi tanggung jawab View.
-
-Dengan pemisahan ini, tampilan aplikasi dapat diubah tanpa harus mengubah struktur data karakter.
-
-### F. Analisis TP10
-
-Dokumen analisis mengenai JavaBeans, getter dan setter, komponen Swing, pengaturan ukuran komponen, logical font, deriveFont(), serta penerapan prinsip MVC dapat dilihat melalui Google Docs berikut:
-
-**Link Google Docs:** https://docs.google.com/document/d/11kpDhQr3-Aafkd5seRJeqxDzZNPjUQwU1N-SBjd2iWI/edit?usp=sharing
-
----
-
-## Teknologi yang Digunakan
-
-- Java
-- Java Swing
-- Visual Studio Code
-- JDK
-- Git dan GitHub
-
----
-
-## Kesimpulan
-
-Melalui TP10, saya mempelajari cara mengatur tema aplikasi menggunakan AppTheme dan menerapkannya pada MainWindow. Saya juga memahami pentingnya pemisahan antara Model dan View dalam konsep MVC. Dengan adanya pengaturan tema terpusat, kode tampilan menjadi lebih rapi, konsisten, dan mudah dikembangkan.
-
----
-
-**Project Character Manager – TP10**
+## Link Dokumentasi
+Google Docs: https://docs.google.com/document/d/1GBHzgEpiXD_ImYjiUwQYhej5cCTAkzlhoFSozl__tug/edit?usp=sharing
