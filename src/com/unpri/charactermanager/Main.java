@@ -1,63 +1,71 @@
-
 package com.unpri.charactermanager;
 
 import com.unpri.charactermanager.model.Character;
 import com.unpri.charactermanager.model.CharacterType;
-import com.unpri.charactermanager.model.CharacterManager;
-import com.unpri.charactermanager.view.MainWindow;
-
-import javax.swing.SwingUtilities;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(() -> {
+        Character hero1 = new Character(
+            "Arthur", CharacterType.WARRIOR
+        );
 
-            CharacterManager manager = new CharacterManager();
+        Character hero2 = new Character(
+            "Merlin", CharacterType.MAGE, 2, 120, 60
+        );
 
-            // 8 karakter dengan role dan level berbeda
+        Character hero3 = new Character(
+            "Robin", CharacterType.ARCHER
+        );
 
-            manager.addCharacter(
-                    new Character("Arthas",
-                            CharacterType.WARRIOR, 5, 150, 60));
+        System.out.println("=== CHARACTER MANAGER ===");
+        System.out.println(hero1);
+        System.out.println(hero2);
+        System.out.println(hero3);
 
-            manager.addCharacter(
-                    new Character("Merlin",
-                            CharacterType.MAGE, 3, 120, 70));
+        System.out.println("\n=== DEMO LEVEL UP ===");
 
-            manager.addCharacter(
-                    new Character("Shadow",
-                            CharacterType.ASSASSIN, 6, 100, 85));
+        System.out.println(
+            "Level Arthur sebelum: " + hero1.getLevel()
+        );
 
-            manager.addCharacter(
-                    new Character("Legolas",
-                            CharacterType.ARCHER, 4, 130, 65));
+        hero1.setLevel(2);
 
-            manager.addCharacter(
-                    new Character("Gatotkaca",
-                            CharacterType.WARRIOR, 8, 200, 90));
+        System.out.println(
+            "Level Arthur sesudah: " + hero1.getLevel()
+        );
 
-            manager.addCharacter(
-                    new Character("Morgana",
-                            CharacterType.MAGE, 7, 140, 80));
+        System.out.println(
+            "HP Arthur: " + hero1.getHitPoints()
+        );
 
-            manager.addCharacter(
-                    new Character("Robin",
-                            CharacterType.ARCHER, 2, 110, 45));
+        System.out.println(
+            "Attack Arthur: " + hero1.getAttack()
+        );
 
-            manager.addCharacter(
-                    new Character("Raven",
-                            CharacterType.ASSASSIN, 1, 100, 50));
+        System.out.println("\n=== MINI-CHALLENGE ===");
 
-            // Mengirim data karakter ke MainWindow
+        Character necro = new Character(
+            "Necro", CharacterType.ASSASSIN, 3, 0, 25
+        );
 
-            MainWindow window = new MainWindow(
-                    manager.getAllCharacters()
+        necro.setMana(50);
+
+        System.out.println(necro);
+
+        System.out.println(
+            "Necro masih hidup? " + necro.isAlive()
+        );
+
+        System.out.println("\n=== DEMO VALIDASI MANA ===");
+
+        try {
+            necro.setMana(-10);
+        } catch (IllegalArgumentException e) {
+            System.out.println(
+                "Validasi berhasil: " + e.getMessage()
             );
-
-            window.setVisible(true);
-
-        });
+        }
     }
 }

@@ -20,8 +20,13 @@ public class Character {
     }
 
     // Constructor kedua
-    public Character(String name, CharacterType type, int level,
-                     int hitPoints, int attack) {
+    public Character(
+        String name,
+        CharacterType type,
+        int level,
+        int hitPoints,
+        int attack
+    ) {
         this.name = name;
         this.type = type;
         this.level = level;
@@ -82,6 +87,7 @@ public class Character {
                 "Mana tidak boleh bernilai negatif."
             );
         }
+
         this.mana = mana;
     }
 
@@ -91,13 +97,11 @@ public class Character {
 
     @Override
     public String toString() {
-        return "Character{" +
-                "name='" + name + '\'' +
-                ", type=" + type +
-                ", level=" + level +
-                ", hitPoints=" + hitPoints +
-                ", attack=" + attack +
-                ", mana=" + mana +
-                '}';
+        return "Character{name='" + name
+            + "', type=" + type
+            + ", level=" + level
+            + ", hitPoints=" + hitPoints
+            + ", attack=" + attack
+            + ", mana=" + mana + "}";
     }
 }
